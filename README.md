@@ -144,19 +144,3 @@ Notes:
 
 - Change thumbnail size globally (example):
   - Edit `assets/css/style.css` and add `:root { --thumb-size: 90px; }` or use the console snippet above to test.
-
----
-
-## Contributing and notes for students
-
-- This project was built to be minimal and educational — it purposefully avoids heavy frameworks so you can read and understand the full stack.
-- If you fork and extend this project, keep these design choices in mind:
-  - Security: the prototype includes basic protections (CSRF token helper, password hashing), but production deployments require more thorough input validation, secure session/cookie settings, and hardened file upload checks.
-  - Migrations: `src/db.php` performs conservative runtime schema checks; for collaborative development consider adding a migrations tool (Phinx or Doctrine Migrations).
-
----
-
-## Troubleshooting
-
-- If image uploads fail: check `data/uploads/` permissions and PHP `upload_max_filesize` and `post_max_size` in `php.ini`.
-- If the app uses SQLite but you want MySQL: set the DB environment variables (or edit `src/db.php`) and import `sql/create_schema.sql` into your MySQL database.
