@@ -1,0 +1,10 @@
+let's say that i wanna implement a web app provided for cosplayers, which are divided into 4 main users: shop owners, shop co-owner, cooperator (only bound by shop owners) and normal users (whose purpose is about to rent outfits,wigs or buy anything else)
+there is only 1 owner for each shop, and there will be unlimited cooperators (shop owner can add into their shop)
+the identity of each user can be bound with an external identity provider (optional) and only logs in via that provider to prevent scamming
+the detail of the shop can show off the adress, phone number of owner (both only shows if user drag the mouse into the corresponding field)
+if the item is a cosplay outfit: includes set name (corresponding to character), brand, size, price (for 3 purposes: testing, shooting, participating festival) in VND, feedbacks (up to 10 from customers, may include message, can include up to 5 images per feedback), and source link (for the original post)
+each outfit can be categorized by gender and which game/anime series does it belong to
+requirements:
+- php for database interaction
+- js for main frames
+- default will turn redirect to "/home"

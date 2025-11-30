@@ -1,0 +1,18 @@
+1. Project Overview
+Each student is required to design and develop a complete website as part of the Web Programming course. The
+website should demonstrate your understanding of HTML5, CSS3, JavaScript, PHP, MySQL, responsive design,
+AJAX, SEO, and basic security practices. This is an individual project and must be developed during the
+semester.
+2. Project Requirements
+A. Layout & Structure: Include header (with logo on the left), navigation bar (Home, Products/Items, Search,
+Contacts), body (with chosen width explained), and footer.
+B. Responsive Design: Website must be responsive across desktop, tablet, and mobile devices.
+C. Products Page: Display products with sorting, pagination or lazy loading. Must design and use a database for
+users and products.
+D. Search with AJAX: Search products by name with AJAX dropdown suggestions and clickable results.
+E. Categories & Breadcrumbs: Organize products by categories and show breadcrumb path (e.g., Home >
+Products > Category).
+F. Store Locations: Show store availability per product and provide Google Maps links.
+G. User Authentication: Register, login, logout, forgot password with email and password. Validation required.
+Support login with Google and Facebook.
+H. SEO: Apply at least 3 SEO practices: meta descriptions, semantic HTML, friendly URLs, sitemap, etc.

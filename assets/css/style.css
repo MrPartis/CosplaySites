@@ -1,0 +1,380 @@
+/* Minimal styles */
+body{font-family:Arial,Helvetica,sans-serif;margin:0;padding:0;color:#222}
+.container{max-width:980px;margin:0 auto;padding:0 12px}
+.site-header{background:#222;color:#fff;padding:10px 0}
+.site-header .header-inner{display:flex;align-items:center;justify-content:space-between}
+.site-header .logo a{color:#fff;text-decoration:none;font-weight:bold;font-size:1.1rem}
+.main-nav a{color:#fff;margin-right:12px;text-decoration:none}
+.auth-links a{color:#fff;margin-left:8px}
+.header-search{margin-left:12px;flex:0 0 360px;max-width:48%;display:flex;position:relative}
+.header-search input{flex:1;padding:8px;border:1px solid #ccc;border-radius:4px;margin-right:8px}
+.header-search button{flex:0 0 auto;padding:8px 10px;border-radius:4px}
+.suggestions{position:absolute;top:100%;left:0;right:0;z-index:40}
+.suggestions .sugg{background:#fff;border:1px solid #ddd;padding:6px;cursor:pointer;color:#222}
+.suggestions .sugg-find-more{display:block;padding:8px;text-align:center;background:#fff;border-top:1px solid #eee}
+.suggestions .sugg-find-more a{color:#0077cc;text-decoration:none;font-weight:600}
+main{padding:18px 0}
+.items{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
+.item{border:1px solid #ddd;padding:8px;position:relative}
+.items .item img{width:100%;height:200px;object-fit:contain;display:block;background:#fafafa}
+.item img{max-width:100%;height:auto;display:block}
+.placeholder{width:100%;height:120px;background:#f3f3f3;display:flex;align-items:center;justify-content:center;color:#888}
+.hidden{display:none}
+.gallery img{max-width:100%;height:auto;margin-right:8px}
+.prices{list-style:none;padding:0}
+.feedback{border-top:1px solid #eee;padding-top:8px;margin-top:8px}
+
+/* Feedback box and media thumbs */
+.feedback-box{border:1px solid #eee;padding:12px;border-radius:8px;background:#fff;margin-bottom:12px}
+.feedback-box{position:relative}
+.feedback-box .rating{font-weight:700}
+
+/* Feedback submission form should match the page content width (same as product-card) */
+.feedback-form{width:100%;box-sizing:border-box;margin:0 auto 12px}
+.feedback-form .feedback-card{border:1px solid #eee;padding:12px;border-radius:6px;background:#fff}
+.feedback-media-strip .fb-media-thumb img,.feedback-media-strip .fb-media-thumb video{display:block}
+.star-row .star{background:transparent;border:0;color:#ccc;font-size:1.2rem;padding:2px 4px;cursor:pointer}
+.star-row .star.selected{color:#ffb400}
+button#reveal{margin:8px 0;padding:6px 10px}
+
+/* Message styles */
+.errors{background:#ffecec;color:#a94442;border:1px solid #f5c6cb;padding:8px;border-radius:4px;margin:8px 0}
+.info{background:#e8f4ff;color:#0b5fa5;border:1px solid #b6e0ff;padding:8px;border-radius:4px;margin:8px 0}
+.success{background:#e6ffed;color:#1e7b2c;border:1px solid #b7f0c2;padding:8px;border-radius:4px;margin:8px 0}
+
+/* Contact reveal overlay: blurred mask with spotlight reveal */
+.contact{position:relative;border:1px solid #eee;padding:8px;border-radius:6px;overflow:hidden;background:#fff}
+.contact .contact-text{position:relative;z-index:1}
+/* Contact privacy: blur private fields by default; unblur when hovering that line */
+.contact{position:relative;border:1px solid #eee;padding:8px;border-radius:6px;overflow:hidden;background:#fff}
+.contact .contact-text{position:relative;z-index:1}
+.contact-line{margin:6px 0}
+.contact-line .private-field{display:inline-block;filter:blur(5px);transition:filter .12s ease,opacity .12s ease;opacity:0.95}
+.contact-line:hover .private-field,.contact-line .private-field:hover{filter:none;opacity:1}
+
+/* When viewing as a guest, keep private fields blurred even on hover */
+.guest .contact .private-field{filter:blur(5px);opacity:0.95}
+.guest .contact .contact-line:hover .private-field, .guest .contact .private-field:hover{filter:blur(5px);opacity:0.95}
+
+/* Guest placeholder for private fields (visible and actionable) */
+.private-field-guest{display:inline-block;color:#0077cc;cursor:pointer;font-weight:600}
+.private-field-guest:hover{text-decoration:underline}
+
+.shop-items{list-style:none;padding:0;margin:0}
+/* reveal button removed; style reserved if needed */
+.shop-items .note{color:#666;font-size:0.9em;margin-left:8px}
+.availability-badge{display:inline-block;background:#e6f7ff;color:#005b9e;padding:4px 6px;border-radius:4px;font-size:0.85em;margin-top:6px}
+
+/* Buttons and form controls (classic clean look) */
+.btn, button, input[type="submit"] {
+	background:#000;color:#fff;border:1px solid #fff;padding:8px 12px;border-radius:4px;cursor:pointer;font-size:0.95rem;
+}
+.btn:hover, button:hover, input[type="submit"]:hover { background:#000000 }
+.small{padding:4px 8px;font-size:0.85rem;border-radius:3px}
+
+/* Header / home-bar buttons: white fill, black text (overrides base .btn) */
+.site-header .header-search button,
+.site-header .btn,
+.site-header button {
+	background:#fff !important;
+	color:#000 !important;
+	border:1px solid #ddd !important;
+}
+.site-header .header-search button:hover,
+.site-header .btn:hover,
+.site-header button:hover {
+	background:#f2f2f2 !important;
+}
+
+/* Detail & product CTA buttons: black fill, white text (applies to product/detail views) */
+.item-detail .btn,
+.item-detail button,
+.product-card .btn,
+.product-card button,
+.cta-row .btn,
+.cta-row button,
+/* filter group buttons */
+.filter-form .btn,
+.filter-form button,
+.filter-actions .btn,
+.filter-actions button,
+/* shop-related actions & management */
+.shop-actions .btn,
+.shop-actions button,
+.shop-management .btn,
+.shop-management button,
+.shop-page-controller .btn,
+.shop-page-controller button,
+/* auth modal / auth forms */
+#loginModal .btn,
+#loginModal button,
+#loginModal a#loginModalForgot,
+.auth-form .btn,
+.auth-form button,
+.login-form .btn,
+.login-form button,
+.register-form .btn,
+.register-form button,
+.forgot-form .btn,
+.forgot-form button {
+	background:#000 !important;
+	color:#fff !important;
+	border:1px solid rgba(255,255,255,0.06) !important;
+}
+.item-detail .btn:hover,
+.product-card .btn:hover,
+.cta-row .btn:hover,
+.filter-form .btn:hover,
+.filter-actions .btn:hover,
+.shop-actions .btn:hover,
+.shop-management .btn:hover,
+.shop-page-controller .btn:hover,
+#loginModal .btn:hover,
+.auth-form .btn:hover {
+	background:#111 !important;
+}
+
+/* Utility: ensure sets of buttons share same min width/height for consistent layout */
+.btn-equal{display:inline-block;min-width:110px;padding:8px 12px;box-sizing:border-box;text-align:center}
+label{display:block;margin:8px 0}
+input,textarea,select{padding:8px;border:1px solid #ccc;border-radius:4px;width:100%;box-sizing:border-box}
+
+/* Shop management area styling */
+.shop-management{border:1px solid #e6e6e6;background:#fafafa;padding:12px;border-radius:6px;margin:12px 0}
+.shop-management h3{margin-top:0}
+
+/* Inline small forms and controls */
+form.inline{display:inline}
+
+/* Shop header layout */
+.shop-header{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
+.shop-info{flex:1}
+.shop-contact{border:1px solid #eee;padding:12px;border-radius:6px;background:#fff}
+.shop-actions{flex:0 0 auto;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.shop-actions .btn{display:block;text-align:center;min-width:140px;background:#0077cc;border-color:#0064a8;color:#fff}
+
+@media (max-width:700px){
+	.shop-header{flex-direction:column}
+	.shop-actions{flex-direction:row}
+	.shop-actions .btn{flex:1}
+}
+
+
+/* External link marker */
+.external-link::after{content:'↗';margin-left:6px;font-size:0.9em;opacity:0.9}
+
+.item-detail{display:flex;gap:20px;align-items:flex-start}
+/* shop-like gallery: large square main preview with a horizontal thumbnail slider below */
+.product-card{display:flex;gap:18px;align-items:flex-start;padding:18px;background:#fff;border:1px solid #e7e7e7;border-radius:8px}
+.left-gallery{flex:0 0 520px}
+.left-gallery .gallery-wrap{display:flex;flex-direction:column;align-items:center;gap:12px}
+.left-gallery .main-img{width:520px;height:520px;background:#f6f6f6;display:flex;align-items:center;justify-content:center;border:1px solid #eee;border-radius:6px;overflow:hidden;position:relative}
+.left-gallery .main-img img{
+	display:block;
+	width: 520px;
+	height: 520px;
+	max-width:100%;
+	max-height:100%;
+	object-fit:contain;
+	margin:auto;
+}
+.thumb-strip{
+	display:flex;align-items:center;gap:8px;justify-content:flex-start;width:100%;box-sizing:border-box;
+}
+.thumb-strip .thumb-nav{
+	background:#fff;border:1px solid #ddd;border-radius:6px;width:40px;height:40px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;flex:0 0 40px
+}
+
+/* Responsive thumb strip: thumb-size, gap and visible count are configurable via CSS variables. */
+.thumb-strip .thumbs{
+	--thumb-size:80px; --thumb-gap:8px; --thumb-count:5;
+	display:flex;
+	gap:var(--thumb-gap);
+	overflow:hidden;
+	overflow-y:hidden;
+	padding:6px;
+	scroll-behavior:smooth;
+	flex:1 1 auto;
+	justify-content:flex-start;
+	-webkit-overflow-scrolling:touch;
+
+	/* limit the scrollable thumbs area to the main-img width so arrows + gaps make up the rest */
+	max-width: calc(var(--main-img-width,520px));
+	width: auto;
+}
+
+/* When the layout becomes narrow we switch to using 100% widths (main-img becomes fluid) */
+@media (max-width:900px){
+	.left-gallery .main-img{ --main-img-width:100%; }
+
+	/* make the whole strip match the fluid main image */
+	.thumb-strip{ width:100%; }
+
+	/* ensure the thumbs area subtracts navs + gaps so the combined width stays equal to the main image */
+	.thumb-strip .thumbs{
+		max-width: calc(100% - 2 * var(--thumb-nav-size,40px) - 2 * var(--thumb-gap,8px));
+	}
+}
+.thumb-strip .thumb-item{flex:0 0 auto;display:flex;align-items:center;justify-content:center;width:var(--thumb-size);height:var(--thumb-size)}
+.thumb-strip .thumb-item img{width:var(--thumb-size);height:var(--thumb-size);object-fit:cover;border:2px solid transparent;border-radius:6px;cursor:pointer;display:block}
+.thumb-strip img.active{border-color:#0077cc;box-shadow:0 2px 6px rgba(0,119,204,0.15)}
+
+.right-details{flex:1 1 0;display:flex;flex-direction:column;gap:12px}
+.product-title{font-size:1.6rem;margin:0}
+.price-block .price-range{font-size:1.4rem;color:#3d3d3d;font-weight:700}
+.shipping-block,.options-block{background:#fafafa;padding:10px;border-radius:6px;border:1px solid #f0f0f0}
+.options-list{display:flex;gap:8px;align-items:center}
+.option.pill{padding:6px 10px;border:1px solid #ddd;border-radius:6px}
+.quantity-block{display:flex;flex-direction:column;gap:6px}
+.qty-input{width:120px;padding:8px}
+.cta-row{display:flex;gap:12px;margin-top:8px}
+.cta-row .btn{min-width:160px}
+
+/* Manage icons for shop owner on item cards */
+.item .manage-icons{position:absolute;right:-6px;bottom:-6px;display:flex;gap:8px;align-items:center;z-index:30}
+/* ensure manage icons stay visually consistent even if links are visited; anchor visited color can be overridden by browser/user styles */
+.item .manage-icons a.small,
+.item .manage-icons a.small:visited,
+.item .manage-icons button.small{
+	background:#000 !important;
+	border:1px solid rgba(0,0,0,0.2) !important;
+	padding:6px 8px;
+	border-radius:6px;
+	color:#fff !important;
+	cursor:pointer;
+	box-shadow:0 2px 6px rgba(0,0,0,0.12);
+}
+.item .manage-icons a.small svg, .item .manage-icons button.small svg{fill:#fff}
+.item .manage-icons a.small:hover, .item .manage-icons button.small:hover{background:#222}
+
+/* Image viewer modal */
+#imageViewerModal.image-viewer-modal{display:none;position:fixed;inset:0;z-index:1200;align-items:center;justify-content:center}
+#imageViewerModal[aria-hidden="false"]{display:flex}
+#imageViewerModal .viewer-backdrop{position:fixed;inset:0;background:rgba(0,0,0,0.75)}
+#imageViewerModal .viewer-content{position:relative;z-index:1201;width:90vw;max-width:1200px;background:transparent;padding:16px;display:flex;flex-direction:column;gap:12px;align-items:center}
+.viewer-close{position:absolute;right:8px;top:8px;z-index:1202;background:rgba(255,255,255,0.9);border:0;border-radius:6px;width:20px;height:20px;font-size:18px;cursor:pointer}
+.viewer-main{width:100%;height:72vh;max-height:80vh;background:#111;display:flex;align-items:center;justify-content:center;border-radius:6px;overflow:hidden}
+.viewer-main img{max-width:100%;max-height:100%;object-fit:contain;display:block;transition:transform .08s linear}
+.viewer-thumb-slider{width:100%;display:flex;align-items:center;gap:8px}
+.viewer-thumb-slider .viewer-thumbs{display:flex;gap:8px;overflow-x:auto;overflow-y:hidden;padding:6px;scroll-behavior:smooth;flex:1 1 auto;justify-content:flex-start;-webkit-overflow-scrolling:touch}
+
+/* Hide native scrollbars but preserve scrolling functionality */
+.thumb-strip .thumbs,
+.viewer-thumb-slider .viewer-thumbs {
+	-ms-overflow-style: none; /* IE/Edge */
+	scrollbar-width: none; /* Firefox */
+}
+.thumb-strip .thumbs::-webkit-scrollbar,
+.viewer-thumb-slider .viewer-thumbs::-webkit-scrollbar {
+	display: none; /* Chrome, Safari, Opera */
+	width: 0; height: 0;
+}
+
+/* Keep focus outline on interactive children for accessibility */
+.thumb-strip .thumbs:focus { outline: none; }
+.viewer-thumb-slider .viewer-thumbs:focus { outline: none; }
+.viewer-thumb-slider .viewer-thumbs img{width:80px;height:80px;object-fit:cover;border:2px solid transparent;border-radius:6px;cursor:pointer;flex:0 0 auto}
+.viewer-thumb-slider .viewer-thumbs img.active{border-color:#fff;box-shadow:0 2px 6px rgba(255,255,255,0.08)}
+
+.gallery.shop-style{position:relative}
+@media (max-width:900px){
+	.magnifier{display:none;right:0;bottom:-120px;width:160px;height:160px;background-size:300% 300%}
+}
+
+/* Responsive visible thumb count: adjust how many thumbnails are visible in the strip */
+/* Defaults: --thumb-count: 5 (desktop). Adjust down for smaller screens. */
+@media (max-width:1200px){ .thumb-strip .thumbs{ --thumb-count:5; --thumb-size:72px; } }
+@media (max-width:1000px){ .thumb-strip .thumbs{ --thumb-count:4; --thumb-size:70px; } }
+@media (max-width:800px){ .thumb-strip .thumbs{ --thumb-count:3; --thumb-size:64px; } }
+@media (max-width:520px){ .thumb-strip .thumbs{ --thumb-count:2; --thumb-size:56px; } }
+@media (max-width:380px){ .thumb-strip .thumbs{ --thumb-count:2; --thumb-size:48px; --thumb-gap:6px; } }
+.item-detail .details{flex:1}
+.item-detail .details h1{margin-top:0;font-size:1.4rem}
+.item-detail .prices{list-style:none;padding:0;margin:12px 0;display:flex;gap:12px}
+.item-detail .prices li{background:#fff;border:1px solid #eee;padding:8px 12px;border-radius:6px}
+
+/* Controls area used on listing pages (keeps same width as page controller) */
+.controls{width:100%;box-sizing:border-box;display:block;margin-bottom:12px}
+
+/* Filter form layout: distribute controls across the same width as results area.
+	 Uses CSS Grid to produce a consistent layout that aligns with the results width.
+*/
+.filter-form{
+	display:grid;
+	grid-template-columns: 1fr 120px 120px 140px 180px 120px auto;
+	gap:12px;
+	align-items:center;
+	width:100%;
+	box-sizing:border-box;
+}
+.filter-form input[type="number"], .filter-form select, .filter-form input[type="text"], .filter-form input[type="search"], .filter-form input[name="size"]{
+	min-width:0; /* allow grid to shrink inputs properly */
+}
+.filter-form .btn, .filter-form .btn-equal, .filter-form a.btn{white-space:nowrap}
+
+@media (max-width:1100px){
+	.filter-form{ grid-template-columns: 1fr 110px 110px 120px 140px 110px auto; }
+}
+@media (max-width:800px){
+	.filter-form{ grid-template-columns: 1fr; }
+	.filter-form label{width:100%}
+	.filter-form .btn, .filter-form a.btn{width:48%;display:inline-block}
+}
+
+/* Action buttons container inside filter form: stack vertically with a small gap */
+.filter-actions{display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+@media (max-width:800px){
+	.filter-actions{flex-direction:row;gap:8px}
+}
+
+/* shop-like page controller: match width to .controls and create large spacing between elements */
+.shop-page-controller{display:flex;align-items:center;justify-content:center;width:100%;box-sizing:border-box;padding:8px 0;gap:20px;max-width:980px;margin:0 auto}
+.shop-page-controller a{text-decoration:none;padding:6px 12px;border-radius:6px}
+.shop-button-solid--primary{background-color:#000000;color:#fff;border:0}
+.shop-button-solid--primary,
+button.shop-button-solid--primary,
+a.shop-button-solid--primary,
+.btn.shop-button-solid--primary {
+	background:#000 !important;
+	color:#fff !important;
+	border:0 !important;
+}
+.shop-button-no-outline{background:transparent;border:0;color:inherit}
+.shop-icon-button{background:transparent;border:0;color:inherit;font-size:18px;padding:6px}
+.shop-button-no-outline--non-click{pointer-events:none;opacity:0.6}
+
+@media (max-width:700px){
+	.shop-page-controller{gap:20px;flex-wrap:wrap}
+}
+
+/* Remove button used for both existing and uploaded thumbs */
+.thumb-remove{display:inline-block;padding:6px 8px;border-radius:6px;border:1px solid #a00;background:#c00;color:#fff;cursor:pointer;font-size:0.9rem}
+.thumb-remove:hover{background:#a90000}
+
+/* Position the remove-feedback form inside the feedback box */
+.feedback-box .fb-remove-form{position:absolute;right:12px;bottom:12px;margin:0}
+.feedback-box .fb-remove-form .btn.small{padding:6px 8px;font-size:0.85rem}
+
+@media (max-width:600px){
+	/* On small screens, keep form in flow so it doesn't overlap content */
+	.feedback-box .fb-remove-form{position:static;margin-top:8px}
+}
+
+.upload-thumb{position:relative}
+
+@media (max-width:900px){
+	.product-card{flex-direction:column}
+	.left-gallery{width:100%;flex:0 0 auto}
+	.left-gallery .main-img{width:100%;height:420px}
+}
+
+/* Accessibility: when contact is focused temporarily, hide overlay */
+.contact.revealed-temp .contact-overlay{display:none}
+
+/* layout responsive */
+@media (max-width:600px){
+	.item{width:100%}
+	.site-header .header-inner{flex-direction:column;align-items:stretch}
+	.main-nav{margin-top:8px}
+	.header-search{max-width:none;flex:1 1 auto;margin-top:8px}
+}
