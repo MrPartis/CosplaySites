@@ -23,7 +23,7 @@ This README explains how to run the project locally, the database options, where
 
 ---
 
-## How to ron
+## How to run
 
 - Copy the whole repository (only contents inside the repository) into /xampp/htdocs directory
 - Run XAMPP, enable Apache and MySQL
