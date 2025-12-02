@@ -24,8 +24,7 @@ if (empty($_FILES['file']) || $_FILES['file']['error'] !== UPLOAD_ERR_OK) {
   exit;
 }
 
-$upDir = __DIR__ . '/../../../data/uploads';
-if (!is_dir($upDir)) mkdir($upDir, 0755, true);
+$upDir = upload_dir();
 
 $f = $_FILES['file'];
 if (!is_uploaded_file($f['tmp_name'])) { http_response_code(400); echo json_encode(['error'=>'Invalid upload']); exit; }
@@ -46,7 +45,7 @@ try {
   $displayOrder = $m + 1;
 } catch (Exception $e) { $displayOrder = 0; }
 
-$urlPath = '/data/uploads/' . $filename;
+$urlPath = upload_url() . '/' . $filename;
 try {
   $ins = $pdo->prepare('INSERT INTO item_images (itemId, url, isPrimary, displayOrder) VALUES (:iid, :url, :isPrimary, :displayOrder)');
   

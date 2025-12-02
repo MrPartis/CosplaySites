@@ -11,10 +11,9 @@ function get_smtp_config() {
     return [
         'host' => 'smtp-relay.gmail.com',
         'port' => 587,
-        'user' => 'mrpartisofficial@gmail.com',
-        'pass' => 'P3GXX56W3VG9',
-        //'from' => 'cosplaysites@polar-cyclist-425612-d2.iam.gserviceaccount.com',
-        'from' => 'mrpartisofficial@gmail.com',
+        'user' => 'fillinhere@mail.com',
+        'pass' => 'app-password-here',
+        'from' => 'fillinhere@mail.com',
         'from_name' => 'CosplaySites',
         'secure' => 'tls',
         'timeout' => 20,

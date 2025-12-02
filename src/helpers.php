@@ -2,6 +2,37 @@
 
 if (session_status() === PHP_SESSION_NONE) session_start();
 
+// Project-level paths
+if (!function_exists('project_root')) {
+    function project_root()
+    {
+        static $root = null;
+        if ($root !== null) return $root;
+        $root = realpath(__DIR__ . '/..');
+        if ($root === false) $root = __DIR__ . '/..';
+        return $root;
+    }
+}
+
+if (!function_exists('upload_dir')) {
+    function upload_dir()
+    {
+        $d = project_root() . '/data/uploads';
+        if (!is_dir($d)) {
+            @mkdir($d, 0755, true);
+        }
+        return $d;
+    }
+}
+
+if (!function_exists('upload_url')) {
+    function upload_url()
+    {
+        // This returns the web path relative to the web root. Adjust if your app is served from a subpath.
+        return '/data/uploads';
+    }
+}
+
 function csrf_token() {
     if (empty($_SESSION['_csrf_token'])) {
         $_SESSION['_csrf_token'] = bin2hex(random_bytes(24));

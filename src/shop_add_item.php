@@ -73,13 +73,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       
       $newInsertedIds = [];
       
-      $upDir = __DIR__ . '/../data/uploads';
-      if (!is_dir($upDir)) mkdir($upDir, 0755, true);
+      $upDir = upload_dir();
 
       if (!empty($_FILES['images'])) {
         
-        $upDir = __DIR__ . '/../data/uploads';
-        if (!is_dir($upDir)) mkdir($upDir, 0755, true);
+        $upDir = upload_dir();
 
         
         try {
@@ -111,7 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           $displayOrder = $saved; 
           $isPrimary = ($saved === 0) ? 1 : 0;
           
-          $urlPath = '/data/uploads/' . $filename;
+          $urlPath = upload_url() . '/' . $filename;
           $ins = $pdo->prepare('INSERT INTO item_images (itemId, url, isPrimary, displayOrder) VALUES (:iid, :url, :isPrimary, :displayOrder)');
           try {
             $ins->execute([':iid'=>$newItemId, ':url'=>$urlPath, ':isPrimary'=>$isPrimary, ':displayOrder'=>$displayOrder]);
@@ -135,7 +133,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $fid = intval($fid);
             
             $g = $pdo->prepare('SELECT id,url FROM feedback_images WHERE feedbackId = :fid'); $g->execute([':fid'=>$fid]);
-            foreach ($g->fetchAll(PDO::FETCH_ASSOC) as $r) { $fpath = __DIR__ . '/..' . ($r['url'] ?? ''); if ($fpath && file_exists($fpath)) @unlink($fpath); }
+            foreach ($g->fetchAll(PDO::FETCH_ASSOC) as $r) { $fpath = project_root() . ($r['url'] ?? ''); if ($fpath && file_exists($fpath)) @unlink($fpath); }
             $pdo->prepare('DELETE FROM feedback_images WHERE feedbackId = :fid')->execute([':fid'=>$fid]);
             $pdo->prepare('DELETE FROM feedbacks WHERE id = :fid')->execute([':fid'=>$fid]);
           }
@@ -160,7 +158,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!$v) continue;
             $mid = intval($mid);
             $g = $pdo->prepare('SELECT url FROM feedback_images WHERE id = :id LIMIT 1'); $g->execute([':id'=>$mid]); $r = $g->fetch(PDO::FETCH_ASSOC);
-            if ($r && !empty($r['url'])) { $f = __DIR__ . '/..' . $r['url']; if (file_exists($f)) @unlink($f); }
+            if ($r && !empty($r['url'])) { $f = project_root() . $r['url']; if (file_exists($f)) @unlink($f); }
             $pdo->prepare('DELETE FROM feedback_images WHERE id = :id')->execute([':id'=>$mid]);
           }
         }
@@ -186,7 +184,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
               if ($ext && strtolower(pathinfo($filename, PATHINFO_EXTENSION)) !== strtolower($ext)) $filename .= '.' . $ext;
               $dest = $upDir . '/' . $filename;
               if (move_uploaded_file($tmp, $dest)) {
-                $urlPath = '/data/uploads/' . $filename;
+                $urlPath = upload_url() . '/' . $filename;
                 $insImg = $pdo->prepare('INSERT INTO feedback_images (feedbackId, url) VALUES (:fid, :url)');
                 $insImg->execute([':fid'=>$fbId, ':url'=>$urlPath]);
               }
@@ -251,7 +249,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($ext && strtolower(pathinfo($filename, PATHINFO_EXTENSION)) !== strtolower($ext)) { $filename .= '.' . $ext; }
             $dest = $upDir . '/' . $filename;
             if (move_uploaded_file($finfo['tmp_name'], $dest)) {
-              $urlPath = '/data/uploads/' . $filename;
+              $urlPath = upload_url() . '/' . $filename;
               $insImg = $pdo->prepare('INSERT INTO feedback_images (feedbackId, url) VALUES (:fid, :url)');
               $insImg->execute([':fid' => $fbId, ':url' => $urlPath]);
             }
@@ -292,7 +290,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           
           $g = $pdo->prepare('SELECT url FROM item_images WHERE id = :id LIMIT 1'); $g->execute([':id'=>$delId]); $r = $g->fetch(PDO::FETCH_ASSOC);
           if ($r && !empty($r['url'])) {
-            $f = __DIR__ . '/..' . $r['url']; if (file_exists($f)) @unlink($f);
+            $f = project_root() . $r['url']; if (file_exists($f)) @unlink($f);
           }
           $d = $pdo->prepare('DELETE FROM item_images WHERE id = :id'); $d->execute([':id'=>$delId]);
         }

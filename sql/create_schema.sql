@@ -1,16 +1,3 @@
--- CosplaySites MySQL schema
--- Creates required tables: users, shops, shop_members, items, item_images, feedbacks, feedback_images
-
--- NOTE: Creating a DB user and granting privileges can touch the server's privilege tables
--- (mysql.*) which on some MariaDB/MySQL installs use the Aria engine and may
--- trigger storage-engine errors (e.g. "Read page with wrong checksum").
--- These statements are commented out to avoid running them in an automated schema
--- import. Run them manually as a database administrator if you need to create
--- the `T1WIN` user on your MySQL/MariaDB server.
---
--- CREATE USER IF NOT EXISTS `T1WIN`@'localhost' IDENTIFIED BY 'leesanghyeok';
--- GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON `cosplay_sites`.* TO `T1WIN`@'localhost';
--- FLUSH PRIVILEGES;
 
 CREATE DATABASE IF NOT EXISTS `cosplay_sites` CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 USE `cosplay_sites`;

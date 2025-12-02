@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_feedback'])) {
   }
 
   
-  $upDir = __DIR__ . '/../data/uploads'; if (!is_dir($upDir)) mkdir($upDir, 0755, true);
+  $upDir = upload_dir();
 
   $insFb = $pdo->prepare('INSERT INTO feedbacks (itemId, userId, rating, message, createdAt) VALUES (:iid, :uid, :rating, :message, CURRENT_TIMESTAMP)');
   $insFb->execute([':iid' => $item['id'], ':uid' => $userId, ':rating' => ($rating ?: null), ':message' => $message]);
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_feedback'])) {
       if ($ext && strtolower(pathinfo($filename, PATHINFO_EXTENSION)) !== strtolower($ext)) $filename .= '.' . $ext;
       $dest = $upDir . '/' . $filename;
       if (move_uploaded_file($f['tmp'], $dest)) {
-        $urlPath = '/data/uploads/' . $filename;
+        $urlPath = upload_url() . '/' . $filename;
         $insImg = $pdo->prepare('INSERT INTO feedback_images (feedbackId, url) VALUES (:fid, :url)');
         $insImg->execute([':fid' => $fbId, ':url' => $urlPath]);
       }
@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_feedback'])) {
     $m = $pdo->prepare('SELECT id, url FROM feedback_images WHERE feedbackId = :fid');
     $m->execute([':fid' => $fid]);
     foreach ($m->fetchAll(PDO::FETCH_ASSOC) as $mr) {
-      if (!empty($mr['url'])) { $fpath = __DIR__ . '/..' . $mr['url']; if (file_exists($fpath)) @unlink($fpath); }
+      if (!empty($mr['url'])) { $fpath = project_root() . $mr['url']; if (file_exists($fpath)) @unlink($fpath); }
     }
     $pdo->prepare('DELETE FROM feedback_images WHERE feedbackId = :fid')->execute([':fid' => $fid]);
     $pdo->prepare('DELETE FROM feedbacks WHERE id = :id')->execute([':id' => $fid]);
